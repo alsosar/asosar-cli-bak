@@ -1,4 +1,4 @@
-# asosar-winbak
+# asosar-cli-bak
 
 Windows user data backup tool with automatic OneDrive path detection.
 

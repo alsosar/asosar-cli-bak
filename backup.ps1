@@ -40,6 +40,17 @@ function Get-ActivePath {
     }
 }
 
+function Show-AsosarBanner {
+    $banner = @'
+  ╔══════════════════════════════════════════╗
+  ║         asosar-cli-back                  ║
+  ║         Windows User Backup Tool         ║
+  ║                  v1.1                    ║
+  ╚══════════════════════════════════════════╝
+'@
+    Write-Host "`n$banner" -ForegroundColor Cyan
+}
+
 $folderNames = @('Desktop', 'Documents', 'Downloads', 'Pictures', 'Music', 'Videos')
 $sourceFolders = @()
 
@@ -90,16 +101,14 @@ if (-not (Test-Path -LiteralPath $destPath)) {
 $timestamp = Get-Date -Format 'yyyyMMdd-HHmmss'
 $logFile = Join-Path $destPath "backup-$timestamp.log"
 
-Write-Host "`n========================================" -ForegroundColor Cyan
-Write-Host "  asosar-winbak - Windows User Backup" -ForegroundColor Cyan
-Write-Host "========================================" -ForegroundColor Cyan
+Show-AsosarBanner
 Write-Host "  Started: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
 Write-Host "  User:    $([Environment]::UserName)"
 Write-Host "  Target:  $destPath"
 $modeLabel = if ($Local) { 'Local only' } else { 'OneDrive + Local (all sources)' }
 Write-Host "  Mode:    $modeLabel"
 if ($WhatIf) { Write-Host "  WHAT-IF: preview only (no files copied)" -ForegroundColor Yellow }
-"asosar-winbak v1.1 - Windows User Backup" | Out-File -FilePath $logFile
+"asosar-cli-back v1.1 - Windows User Backup" | Out-File -FilePath $logFile
 "Started: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" | Out-File -FilePath $logFile -Append
 "User:    $([Environment]::UserName)" | Out-File -FilePath $logFile -Append
 "Target:  $destPath" | Out-File -FilePath $logFile -Append
