@@ -55,6 +55,23 @@ function Show-AsosarBanner {
 
 Show-AsosarBanner
 
+# Interactive mode when no flags are passed
+if (-not $Destination -and -not $Local -and -not $WhatIf) {
+    Write-Host "Select backup mode:" -ForegroundColor Yellow
+    Write-Host "  1) Local only (C:\Users\$env:USERNAME\Desktop, Documents, etc.)"
+    Write-Host "  2) OneDrive + Local (all available sources)"
+    do {
+        $modeChoice = Read-Host "Choice (1 or 2)"
+    } while ($modeChoice -ne '1' -and $modeChoice -ne '2')
+    if ($modeChoice -eq '1') { $Local = $true }
+    Write-Host ""
+
+    do {
+        $Destination = Read-Host "Enter backup destination folder path"
+        $Destination = $Destination.Trim()
+    } while (-not $Destination)
+}
+
 $folderNames = @('Desktop', 'Documents', 'Downloads', 'Pictures', 'Music', 'Videos')
 $sourceFolders = @()
 
