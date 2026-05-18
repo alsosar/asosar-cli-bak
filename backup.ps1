@@ -68,6 +68,7 @@ function Show-AsosarBanner {
 ██║░░██╗██║░░░░░██║╚════╝██╔══██╗██╔══██║██╔═██╗░
 ╚█████╔╝███████╗██║░░░░░░██████╦╝██║░░██║██║░╚██╗
 ░╚════╝░╚══════╝╚═╝░░░░░░╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝
+      asosar-cli-bak - Windows User Backup
 '@
     $lines = $art -split "`r`n|`n"
     Write-Frame -Lines $lines -Color Cyan
