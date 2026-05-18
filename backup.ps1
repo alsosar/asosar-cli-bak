@@ -11,6 +11,26 @@ $ErrorActionPreference = 'Continue'
 $startTime = Get-Date
 $totalFailed = 0
 
+function Write-Frame {
+    param([string[]]$Lines, [ConsoleColor]$Color = $Host.UI.RawUI.ForegroundColor)
+
+    $w = $Host.UI.RawUI.WindowSize.Width
+    $inner = $w - 2
+
+    Write-Host ("▐" + "▀" * $inner + "▌") -ForegroundColor $Color
+    foreach ($line in $Lines) {
+        if ([string]::IsNullOrEmpty($line)) {
+            Write-Host ("▐" + " " * $inner + "▌")
+        } elseif ($line.Length -ge $inner) {
+            Write-Host ("▐" + $line.Substring(0, $inner) + "▌")
+        } else {
+            Write-Host ("▐" + $line.PadRight($inner) + "▌")
+        }
+    }
+    Write-Host ("▐" + "▄" * $inner + "▌") -ForegroundColor $Color
+    Write-Host ''
+}
+
 function Get-UserShellFolder {
     param([string]$Key)
     $regPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"
@@ -41,7 +61,7 @@ function Get-ActivePath {
 }
 
 function Show-AsosarBanner {
-    $banner = @'
+    $art = @'
 ░█████╗░██╗░░░░░██╗░░░░░░██████╗░░█████╗░██╗░░██╗
 ██╔══██╗██║░░░░░██║░░░░░░██╔══██╗██╔══██╗██║░██╔╝
 ██║░░╚═╝██║░░░░░██║█████╗██████╦╝███████║█████═╝░
@@ -49,7 +69,8 @@ function Show-AsosarBanner {
 ╚█████╔╝███████╗██║░░░░░░██████╦╝██║░░██║██║░╚██╗
 ░╚════╝░╚══════╝╚═╝░░░░░░╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝
 '@
-    Write-Host "`n$banner" -ForegroundColor Cyan
+    $lines = $art -split "`r`n|`n"
+    Write-Frame -Lines $lines -Color Cyan
 }
 
 Show-AsosarBanner
