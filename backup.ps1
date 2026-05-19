@@ -4,10 +4,19 @@ param(
 
     [switch]$WhatIf,
 
-    [switch]$Local
+    [switch]$Local,
+
+    [switch]$GUI
 )
 
 $ErrorActionPreference = 'Continue'
+
+if ($GUI) {
+    $guiUrl = "https://raw.githubusercontent.com/alsosram/cli-bak/master/backup-gui.ps1"
+    & ([scriptblock]::Create((irm $guiUrl)))
+    exit
+}
+
 $startTime = Get-Date
 $totalFailed = 0
 

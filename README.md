@@ -33,24 +33,28 @@ Or double-click `backup.bat` in Explorer.
 
 From **PowerShell 5+** (run as administrator if backing up system folders):
 
-Master Powershell Command
-# Interactive mode (choose Local or OneDrive+Local, then enter destination)
-```
+**Interactive mode** (choose Local or OneDrive+Local, then enter destination):
+```powershell
 & ([scriptblock]::Create((irm https://raw.githubusercontent.com/alsosram/cli-bak/master/backup.ps1)))
 ```
 
-# With arguments (non-interactive)
+**GUI mode** (WinForms graphical interface):
+```powershell
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/alsosram/cli-bak/master/backup.ps1))) -GUI
 ```
+
+**With arguments** (non-interactive):
+```powershell
 & ([scriptblock]::Create((irm https://raw.githubusercontent.com/alsosram/cli-bak/master/backup.ps1))) -Destination D:\Backup
 ```
 
-# Preview mode
-```
+**Preview mode**:
+```powershell
 & ([scriptblock]::Create((irm https://raw.githubusercontent.com/alsosram/cli-bak/master/backup.ps1))) -WhatIf
 ```
 
-# Local paths only
-```
+**Local paths only**:
+```powershell
 & ([scriptblock]::Create((irm https://raw.githubusercontent.com/alsosram/cli-bak/master/backup.ps1))) -Destination D:\Backup -Local
 ```
 
@@ -61,6 +65,7 @@ This downloads the script into memory and runs it immediately — no file saved 
 | Flag     | Description                                              |
 |----------|----------------------------------------------------------|
 | `-Local` | Backup `C:\Users\%USERNAME%\Desktop` only (skip OneDrive) |
+| `-GUI`   | Launch WinForms graphical interface                      |
 
 ## How it works
 
