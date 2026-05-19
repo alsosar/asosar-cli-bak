@@ -36,12 +36,22 @@ From **PowerShell 5+** (run as administrator if backing up system folders):
 Master Powershell Command
 # Interactive mode (choose Local or OneDrive+Local, then enter destination)
 ```
-& ([scriptblock]::Create((irm https://raw.githubusercontent.com/alsosar/alsosar-cli-bak/master/backup.ps1)))
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/alsosram/cli-bak/master/backup.ps1)))
+```
+
+# With arguments (non-interactive)
+```
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/alsosram/cli-bak/master/backup.ps1))) -Destination D:\Backup
+```
+
+# Preview mode
+```
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/alsosram/cli-bak/master/backup.ps1))) -WhatIf
 ```
 
 # Local paths only
 ```
-& ([scriptblock]::Create((irm https://raw.githubusercontent.com/alsosar/alsosar-cli-bak/master/backup.ps1))) -Destination D:\Backup -Local
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/alsosram/cli-bak/master/backup.ps1))) -Destination D:\Backup -Local
 ```
 
 This downloads the script into memory and runs it immediately — no file saved to disk.
