@@ -12,7 +12,7 @@ param(
 $ErrorActionPreference = 'Continue'
 
 if ($GUI) {
-    $guiUrl = "https://raw.githubusercontent.com/alsosram/cli-bak/master/backup-gui.ps1"
+    $guiUrl = "https://raw.githubusercontent.com/sosramalex/cli-bak/master/backup-gui.ps1"
     & ([scriptblock]::Create((irm $guiUrl)))
     exit
 }

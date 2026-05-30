@@ -35,27 +35,27 @@ From **PowerShell 5+** (run as administrator if backing up system folders):
 
 **Interactive mode** (choose Local or OneDrive+Local, then enter destination):
 ```powershell
-& ([scriptblock]::Create((irm https://raw.githubusercontent.com/alsosram/cli-bak/master/backup.ps1)))
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/sosramalex/cli-bak/master/backup.ps1)))
 ```
 
 **GUI mode** (WinForms graphical interface):
 ```powershell
-& ([scriptblock]::Create((irm https://raw.githubusercontent.com/alsosram/cli-bak/master/backup.ps1))) -GUI
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/sosramalex/cli-bak/master/backup.ps1))) -GUI
 ```
 
 **With arguments** (non-interactive):
 ```powershell
-& ([scriptblock]::Create((irm https://raw.githubusercontent.com/alsosram/cli-bak/master/backup.ps1))) -Destination D:\Backup
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/sosramalex/cli-bak/master/backup.ps1))) -Destination D:\Backup
 ```
 
 **Preview mode**:
 ```powershell
-& ([scriptblock]::Create((irm https://raw.githubusercontent.com/alsosram/cli-bak/master/backup.ps1))) -WhatIf
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/sosramalex/cli-bak/master/backup.ps1))) -WhatIf
 ```
 
 **Local paths only**:
 ```powershell
-& ([scriptblock]::Create((irm https://raw.githubusercontent.com/alsosram/cli-bak/master/backup.ps1))) -Destination D:\Backup -Local
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/sosramalex/cli-bak/master/backup.ps1))) -Destination D:\Backup -Local
 ```
 
 This downloads the script into memory and runs it immediately — no file saved to disk.
